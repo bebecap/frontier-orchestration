@@ -12,13 +12,16 @@ All notable changes to this project are listed here. The format follows
 
 - Roster: `gpt-6.2-sol` and `gpt-6.2-astra`, the two new models in the Codex catalogue (first
   seen 2026-11-17). The router can pick them when a task lists them as candidates, and
-  `fo.py refresh` no longer reports them as drift. Neither has a measured review prior: their
-  descriptions say so.
+  `fo.py refresh` no longer reports them as drift.
+- Evidence: a blind review run of both new models beside `gpt-6.1-sol` and `gpt-6-astra`, on one
+  file with 10 seeded defects and 4 correct-code traps, through `fo.py ask codex`. Both new models
+  found 10 of 10 and flagged no trap. The result and its limits are in
+  `references/evidence.md` and in the roster descriptions.
 
 ### Changed
 
-- The aliases `sol` and `astra` stay on `gpt-6.1-sol` and `gpt-6-astra`, the models with measured
-  runs. To use a new model, name its full id.
+- The aliases `sol` and `astra` stay on `gpt-6.1-sol` and `gpt-6-astra`: one run on one file does
+  not show that the new models review better. To use a new model, name its full id.
 - The shipped eval tasks are unchanged, so eval results stay comparable with 0.1.0.
 
 ## [0.1.0] - 2026-11-17
