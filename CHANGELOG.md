@@ -6,6 +6,21 @@ All notable changes to this project are listed here. The format follows
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-17
+
+### Added
+
+- Roster: `gpt-6.2-sol` and `gpt-6.2-astra`, the two new models in the Codex catalogue (first
+  seen 2026-11-17). The router can pick them when a task lists them as candidates, and
+  `fo.py refresh` no longer reports them as drift. Neither has a measured review prior: their
+  descriptions say so.
+
+### Changed
+
+- The aliases `sol` and `astra` stay on `gpt-6.1-sol` and `gpt-6-astra`, the models with measured
+  runs. To use a new model, name its full id.
+- The shipped eval tasks are unchanged, so eval results stay comparable with 0.1.0.
+
 ## [0.1.0] - 2026-11-17
 
 First public release.
@@ -268,5 +283,6 @@ First public release.
 - The OpenJev launcher caps MLX's buffer pool at 1 GB for the pinned builds (peak memory 19 GB
   instead of 22, same eval results).
 
-[Unreleased]: https://github.com/bebecap/frontier-orchestration/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/bebecap/frontier-orchestration/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/bebecap/frontier-orchestration/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/bebecap/frontier-orchestration/releases/tag/v0.1.0

@@ -26,7 +26,7 @@ Example of a healthy machine, from a Claude Code host on 2026-11-16 (home paths 
 ```
 ok   config ~/.config/frontier-orchestration/config.json
 ok   python 3.14.7
-ok   roster 17 models, checked 2026-11-15
+ok   roster 19 models, checked 2026-11-17
 ok   jev typesafe https://api.typesafe.ai model jev-latest; key found
 host: claude-code
   Claude                 host        model: the CLI's default

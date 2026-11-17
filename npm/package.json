@@ -1,6 +1,6 @@
 {
   "name": "frontier-orchestration",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Prototype installer: one command copies the frontier-orchestration plugin to a stable folder and registers it with Claude Code, Codex, Antigravity (agy) and the shared skills folder.",
   "license": "MIT",
