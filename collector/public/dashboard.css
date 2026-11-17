@@ -1,0 +1,134 @@
+/* Telemetry dashboard. Served as a file: the CSP allows no inline style. */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.10);
+  --accent: #2a78d6;
+  --critical: #d03b3b;
+  /* Categorical slots, fixed order (validated set). "other" is a neutral gray. */
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+  --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --other: #a8a79f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --accent: #3987e5;
+    --critical: #e66767;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+    --s5: #d55181; --s6: #0ca30c; --s7: #9085e9; --other: #6b6a64;
+  }
+}
+
+* { box-sizing: border-box; }
+/* "hidden" must win over the display rules below. */
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body {
+  background: var(--page);
+  color: var(--ink);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+main { max-width: 960px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 1.35rem; margin: 0 0 4px; }
+h2 { font-size: 1rem; margin: 0 0 4px; }
+h2.section { margin: 24px 0 8px; }
+p { margin: 0; }
+.muted { color: var(--ink-2); }
+.small { font-size: 0.85rem; }
+header { margin-bottom: 20px; }
+
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.row.between { justify-content: space-between; }
+
+form#auth {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 16px; display: grid; gap: 8px; margin-bottom: 16px;
+}
+label { font-weight: 600; font-size: 0.9rem; }
+input[type="password"] {
+  flex: 1 1 200px; min-width: 0; font: inherit; color: var(--ink); background: var(--page);
+  border: 1px solid var(--axis); border-radius: 8px; padding: 8px 10px;
+}
+button {
+  font: inherit; font-size: 0.9rem; color: #ffffff; background: var(--accent);
+  border: 1px solid transparent; border-radius: 8px; padding: 8px 12px; cursor: pointer;
+  min-height: 36px;
+}
+button.ghost, .segmented button { color: var(--ink); background: var(--surface); border-color: var(--border); }
+.segmented { display: inline-flex; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+.segmented button { border: 0; border-radius: 0; }
+.segmented button + button { border-left: 1px solid var(--border); }
+.segmented button[aria-pressed="true"] { background: var(--accent); color: #ffffff; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button:disabled { opacity: 0.6; cursor: default; }
+
+#controls { margin-bottom: 12px; }
+#status { min-height: 1.45em; margin-bottom: 12px; color: var(--ink-2); }
+#status.error { color: var(--critical); font-weight: 600; }
+
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
+.tile, .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.card { margin-bottom: 16px; }
+.label { color: var(--ink-2); font-size: 0.8rem; }
+.hero { font-size: 1.6rem; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+.legend { list-style: none; padding: 0; margin: 8px 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.85rem; color: var(--ink-2); }
+.legend li { display: inline-flex; align-items: center; gap: 6px; }
+.legend svg { flex: none; }
+#chartbox { width: 100%; }
+#chart { display: block; width: 100%; height: 220px; }
+.readout { min-height: 1.45em; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+/* SVG marks: colors by class so dark mode swaps them. */
+.grid { stroke: var(--grid); stroke-width: 1; }
+.baseline { stroke: var(--axis); stroke-width: 1; }
+.tick { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.hit { fill: transparent; }
+.hit:hover, .hit.on { fill: var(--border); }
+.c1 { fill: var(--s1); } .c2 { fill: var(--s2); } .c3 { fill: var(--s3); } .c4 { fill: var(--s4); }
+.c5 { fill: var(--s5); } .c6 { fill: var(--s6); } .c7 { fill: var(--s7); } .c0 { fill: var(--other); }
+.bar { fill: var(--accent); }
+.track { fill: var(--grid); }
+
+.fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.fields .card { margin: 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+caption { text-align: left; font-weight: 600; padding-bottom: 6px; overflow-wrap: anywhere; }
+th, td { padding: 4px 6px; border-bottom: 1px solid var(--grid); text-align: left; vertical-align: middle; }
+th { color: var(--ink-2); font-weight: 500; font-size: 0.8rem; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+td.value { overflow-wrap: anywhere; }
+td.share { width: 38%; }
+td.share svg { display: block; width: 100%; height: 8px; }
+td.share span { font-size: 0.8rem; color: var(--ink-2); }
+
+/* Write budget: an hour that reached the limit. The label carries the meaning, not only color. */
+tr.saturated td { color: var(--critical); font-weight: 600; }
+.flag { display: inline-block; font-size: 0.75rem; font-weight: 600; color: var(--critical);
+  border: 1px solid var(--critical); border-radius: 4px; padding: 0 4px; }
+
+@media (max-width: 480px) {
+  .tiles { grid-template-columns: 1fr 1fr; }
+  .tiles .tile:first-child { grid-column: 1 / -1; }
+  .hero { font-size: 1.35rem; }
+  .fields { grid-template-columns: 1fr; }
+  .row.between { gap: 12px; }
+}
+@media (forced-colors: active) {
+  .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c0, .bar { fill: CanvasText; }
+}

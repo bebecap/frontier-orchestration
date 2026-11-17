@@ -1,0 +1,38 @@
+{
+  "name": "frontier-orchestration",
+  "version": "0.1.0",
+  "description": "Route high-stakes work across frontier models (Claude, Codex, Gemini) with a Jev judge (TypeSafe or OpenJev), a confidence x stakes gate, a different-vendor review rule, and a learning ledger.",
+  "author": {
+    "name": "Vova Grytsenko",
+    "url": "https://github.com/bebecap"
+  },
+  "homepage": "https://github.com/bebecap/frontier-orchestration",
+  "repository": "https://github.com/bebecap/frontier-orchestration",
+  "license": "MIT",
+  "keywords": [
+    "orchestration",
+    "routing",
+    "model-selection",
+    "code-review",
+    "cross-vendor",
+    "jev",
+    "openjev"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Frontier Orchestration",
+    "shortDescription": "Route work across Claude, Codex and Gemini with a Jev judge",
+    "longDescription": "Discovers which frontier models are reachable, asks Jev (TypeSafe or OpenJev) which model fits each task, gates the pick on confidence x stakes, requires a different-vendor reviewer, and keeps a learning ledger of what worked.",
+    "developerName": "Vova Grytsenko",
+    "category": "Productivity",
+    "capabilities": [
+      "Read"
+    ],
+    "websiteURL": "https://github.com/bebecap/frontier-orchestration",
+    "defaultPrompt": [
+      "Route this estimate review across vendors and tell me which model should review it.",
+      "Set up frontier orchestration for this machine.",
+      "Run a blind cross-vendor review of this diff."
+    ]
+  }
+}

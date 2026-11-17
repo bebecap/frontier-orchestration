@@ -1,0 +1,129 @@
+{
+  "schema": 4,
+  "events": [
+    "setup",
+    "config",
+    "doctor",
+    "providers",
+    "refresh",
+    "route",
+    "jev_ping",
+    "lessons",
+    "telemetry",
+    "ask"
+  ],
+  "enums": {
+    "os": [
+      "darwin",
+      "linux",
+      "windows",
+      "other"
+    ],
+    "arch": [
+      "arm64",
+      "x86_64",
+      "other"
+    ],
+    "host": [
+      "claude-code",
+      "codex",
+      "agy",
+      "unknown",
+      "other"
+    ],
+    "duration": [
+      "lt1s",
+      "1to10s",
+      "10to60s",
+      "gt60s"
+    ],
+    "jev_backend": [
+      "typesafe",
+      "openjev",
+      "codiv",
+      "custom",
+      "off"
+    ],
+    "judge": [
+      "jev",
+      "heuristic",
+      "none"
+    ],
+    "subcommand": [
+      "recall",
+      "add",
+      "reinforce",
+      "contradict",
+      "retire",
+      "run-new",
+      "run-close",
+      "lint",
+      "init",
+      "show",
+      "set",
+      "get",
+      "path",
+      "on",
+      "off",
+      "status",
+      "log",
+      "none"
+    ],
+    "mode": [
+      "interactive",
+      "flags",
+      "none"
+    ],
+    "ask_status": [
+      "ok",
+      "failed",
+      "timeout",
+      "empty",
+      "refused"
+    ],
+    "ask_vendor": [
+      "claude",
+      "codex",
+      "gemini"
+    ],
+    "error_kind": [
+      "none",
+      "config",
+      "input",
+      "independence",
+      "jev_auth",
+      "jev_network",
+      "jev_other",
+      "ledger",
+      "other"
+    ]
+  },
+  "ints": [
+    "tasks",
+    "acted",
+    "escalated",
+    "rejected",
+    "vendors_reachable",
+    "lessons_shown"
+  ],
+  "bools": [
+    "ok",
+    "independent_review_possible"
+  ],
+  "via_keys": [
+    "via_claude",
+    "via_codex",
+    "via_gemini"
+  ],
+  "via": [
+    "host",
+    "cli",
+    "gemini-cli",
+    "agy",
+    "none"
+  ],
+  "strings": {
+    "fo_version": "^[A-Za-z0-9.+-]{1,20}$",
+    "python": "^[0-9.]{1,6}$"
+  }
+}

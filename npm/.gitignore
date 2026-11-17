@@ -1,0 +1,5 @@
+# Built by scripts/bundle.mjs (npm pack runs it). Never commit it.
+bundle/
+.bundle-*/
+# npm pack output.
+*.tgz

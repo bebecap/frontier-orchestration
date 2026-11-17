@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+# Local-only list of private words the privacy test blocks. Never commit it.
+.privacy-denylist
+# Never commit keys.
+*.key
+.env
+.env.*
+node_modules/
+# Agent tool state (worktrees, settings): never part of the repository.
+.claude/

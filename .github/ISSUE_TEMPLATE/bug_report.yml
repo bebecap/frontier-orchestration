@@ -1,0 +1,62 @@
+name: Bug report
+description: Something in the skill, fo.py, a manifest or the installer does not work as the docs say.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report a security problem here. See SECURITY.md.
+        Never paste an API key, a prompt with private data, or a full home path.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: The command you ran and the output you got. Remove keys and private paths.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: fo.py doctor output
+      description: "Output of `python3 -I skills/frontier-orchestration/scripts/fo.py doctor`. Remove keys and private paths."
+      render: text
+  - type: dropdown
+    id: host
+    attributes:
+      label: Host
+      options:
+        - Claude Code
+        - OpenAI Codex
+        - Antigravity (agy)
+        - skills.sh (another agent)
+        - fo.py from a clone
+        - npm installer prototype
+    validations:
+      required: true
+  - type: dropdown
+    id: engine
+    attributes:
+      label: Decision engine (jev.backend)
+      options:
+        - typesafe
+        - openjev
+        - codiv
+        - custom
+        - "off"
+        - not set up yet
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: "`fo.py version`, `python3 --version`, and the OS (macOS or Linux, with version)."
+    validations:
+      required: true

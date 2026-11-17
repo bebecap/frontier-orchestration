@@ -1,0 +1,6 @@
+{
+  "name": "frontier-orchestration",
+  "version": "0.1.0",
+  "description": "Route high-stakes work across frontier models (Claude, Codex, Gemini) with a Jev judge (TypeSafe or OpenJev), a confidence x stakes gate, a different-vendor review rule, and a learning ledger.",
+  "logo": "assets/logo.svg"
+}

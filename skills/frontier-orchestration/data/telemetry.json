@@ -1,0 +1,6 @@
+{
+  "format": "posthog-capture",
+  "endpoint": "https://fo-telemetry.vercel.app/api/e",
+  "project_key": "fo_pub_9f30bec330a5a0a0",
+  "note": "Public write-only key for the project's own collector (collector/ in this repository; Vercel fra1 with Neon Postgres; it keeps only daily counters, no events, no ids and no IP, for 365 days). It only lets a client add an event; it cannot read anything. Forks can point FO_TELEMETRY_ENDPOINT and FO_TELEMETRY_KEY at their own collector or any PostHog-compatible capture endpoint."
+}

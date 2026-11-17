@@ -1,0 +1,126 @@
+{
+  "checked": "2026-11-15",
+  "note": "Dated catalogue of models the router can pick from. Ids go stale: run `fo.py refresh` to see drift against what your CLIs offer today, and override entries in ~/.config/frontier-orchestration/roster.json instead of editing this file.",
+  "models": {
+    "fable": {
+      "vendor": "claude",
+      "tier": "top",
+      "exact": "claude-fable-5-2",
+      "description": "Alias for the top Claude tier (Claude Fable 5.2 on 2026-11-15, 1M context). Hardest reasoning, difficult code, long-horizon agentic work. Highest Claude price and long turns: use it where a mistake is expensive."
+    },
+    "opus": {
+      "vendor": "claude",
+      "tier": "frontier",
+      "exact": "claude-opus-5-5",
+      "description": "Alias for the current Claude Opus (Opus 5.5 on 2026-11-15, 1M context). One tier below fable at about half the price. Best default for orchestration, holding a whole codebase in view, and long prose that must stay accurate."
+    },
+    "sonnet": {
+      "vendor": "claude",
+      "tier": "mid",
+      "exact": "claude-sonnet-5-5",
+      "description": "Alias for mid-tier Claude (Sonnet 5.5 on 2026-11-15, 1M context). Fast, capable, much cheaper than frontier. Best for well-specified bulk work: repo sweeps, mechanical edits, following an exact recipe."
+    },
+    "haiku": {
+      "vendor": "claude",
+      "tier": "small",
+      "exact": "claude-haiku-5-5",
+      "description": "Alias for the smallest Claude (Haiku 5.5 on 2026-11-15). Cheapest and fastest. For trivial mechanical steps where an error is obvious and cheap."
+    },
+    "gpt-6.1-sol": {
+      "vendor": "codex",
+      "tier": "frontier",
+      "aliases": [
+        "sol"
+      ],
+      "description": "Current Codex frontier (GPT-6.1 Sol). A DIFFERENT vendor from Claude, so it fails differently. Maintainer runs: on server-side concurrency and data-safety code review every finding held, most with its own runtime probe; it found transaction-lifetime, lock-order and timeout defects. It did not catch that one of its own prescribed fixes crashed the driver: verify prescribed fixes by reproduction."
+    },
+    "gpt-6-astra": {
+      "vendor": "codex",
+      "tier": "frontier",
+      "aliases": [
+        "astra"
+      ],
+      "description": "Codex frontier (GPT-6 Astra). A DIFFERENT vendor from Claude. Finds CONCRETE DEFECTS: a wrong line in the code. Maintainer runs: on a raw estimate 3 of 5 specific claims held and its size asks were about 2.5x too big; on an already-verified estimate its direction held on every item and about one third of its size asks survived. Verify both the claim and the size."
+    },
+    "gpt-6-sol": {
+      "vendor": "codex",
+      "tier": "frontier",
+      "aliases": [],
+      "description": "Previous-generation general Codex model (GPT-6 Sol). A DIFFERENT vendor from Claude. No measured review prior of its own: prefer gpt-6.1-sol or gpt-6-astra for a ship gate."
+    },
+    "gpt-5.6-sol": {
+      "vendor": "codex",
+      "tier": "frontier",
+      "aliases": [],
+      "description": "Previous Codex frontier. Finds MISSING CATEGORIES and framing errors rather than wrong lines. Maintainer runs: on a raw estimate framing and sizes both held; on a verified estimate framing held but about one twelfth of its size asks survived. On a high-stakes review, run it beside Astra: neither finds the other's class of problem."
+    },
+    "gpt-6.1-terra": {
+      "vendor": "codex",
+      "tier": "mid",
+      "aliases": [
+        "terra"
+      ],
+      "description": "Current mid-tier Codex (GPT-6.1 Terra). Bounded implementation and mechanical work at lower cost. No measured review prior."
+    },
+    "gpt-5.6-terra": {
+      "vendor": "codex",
+      "tier": "mid",
+      "aliases": [],
+      "description": "Older mid-tier Codex. Kept for runs that measured it; prefer gpt-6.1-terra."
+    },
+    "gpt-6-luna": {
+      "vendor": "codex",
+      "tier": "small",
+      "aliases": [
+        "luna"
+      ],
+      "description": "Fast, affordable Codex model for easier tasks (GPT-6 Luna). Cheap bounded checks. No measured review prior."
+    },
+    "gpt-reserve": {
+      "vendor": "codex",
+      "tier": "small",
+      "aliases": [],
+      "description": "Fast, affordable agentic coding model from the Codex catalogue. No measured prior."
+    },
+    "gpt-5.6-luna": {
+      "vendor": "codex",
+      "tier": "small",
+      "aliases": [],
+      "description": "Older fast, cheap Codex model. Prefer gpt-6-luna."
+    },
+    "gemini-4-argon": {
+      "vendor": "gemini",
+      "tier": "frontier",
+      "aliases": [
+        "argon",
+        "top"
+      ],
+      "description": "Top Gemini (Google). A DIFFERENT vendor from Claude and Codex. Strong at long context and multimodal input (images, video, PDFs). Maintainer runs on content and visual work only: screenshot reading 42 of 63 claims held, visual defects 10 of 10 held, and one spec-review finding was invented (it quoted figures the artefact does not have). No measured prior for code review: verify every finding. An optional third blind review lane."
+    },
+    "gemini-4-hydrogen": {
+      "vendor": "gemini",
+      "tier": "frontier",
+      "aliases": [
+        "hydrogen"
+      ],
+      "description": "New Gemini (Google), effort up to xhigh. A DIFFERENT vendor from Claude and Codex. NO measured prior and no evidence that it is better than gemini-4-argon. Use it only as an extra blind lane next to a measured reviewer; verify every finding."
+    },
+    "gemini-3.8-flash": {
+      "vendor": "gemini",
+      "tier": "small",
+      "aliases": [
+        "flash"
+      ],
+      "description": "Fast Gemini (Google). A DIFFERENT vendor from Claude and Codex. No measured prior. For cheap bounded checks and long-context skims."
+    },
+    "jev": {
+      "vendor": "jev",
+      "tier": "judge",
+      "aliases": [
+        "jev-latest",
+        "openjev-latest"
+      ],
+      "description": "System One judge (TypeSafe Jev, or an OpenJev-compatible server). Typed judgments and calibrated probabilities, never text. For routing, scoring and yes/no judgments that code acts on."
+    }
+  }
+}

@@ -1,0 +1,31 @@
+name: Feature request
+description: Propose a change to routing, providers, the ledger, eval, telemetry or the docs.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What you tried to do, and what stopped you.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: The change you propose
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: |
+        A measured run if you have one (for example `fo.py eval` output, or a route that went wrong).
+        A new model in the roster or a new rule in references/rules.md needs the runs behind it.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - label: The change keeps the skill on the Python standard library.
+        - label: The change sends no new telemetry field, or it says which field and why.

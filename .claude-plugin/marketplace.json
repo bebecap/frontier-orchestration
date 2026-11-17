@@ -1,0 +1,23 @@
+{
+  "name": "frontier-orchestration",
+  "description": "Frontier orchestration: route work across Claude, Codex and Gemini, judged by Jev or OpenJev.",
+  "owner": {
+    "name": "Vova Grytsenko",
+    "url": "https://github.com/bebecap"
+  },
+  "plugins": [
+    {
+      "name": "frontier-orchestration",
+      "source": "./",
+      "description": "Route high-stakes work across frontier models with a Jev judge, a confidence x stakes gate, a different-vendor review rule, and a learning ledger.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": [
+        "orchestration",
+        "routing",
+        "review",
+        "multi-model"
+      ]
+    }
+  ]
+}

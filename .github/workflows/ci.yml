@@ -1,0 +1,77 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: macos-latest, python: "3.9"}    # the macOS system Python floor
+          - {os: macos-latest, python: "3.13"}
+          - {os: ubuntu-latest, python: "3.10"}  # oldest Python the Ubuntu image offers
+          - {os: ubuntu-latest, python: "3.13"}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests (stdlib only, local HTTP servers, no vendor calls)
+        run: python -m unittest discover -s tests -v
+      - name: Route self check
+        run: python -I skills/frontier-orchestration/scripts/fo.py route --check
+
+  # A new user's first commands on Linux, engine off, no network, no key: route --demo, doctor,
+  # providers, setup, every --help, eval, and the interactive installer under a pseudo-terminal.
+  linux-e2e:
+    runs-on: ubuntu-latest
+    env:
+      FO_JEV_BACKEND: "off"
+      FO_TELEMETRY: "0"
+      DO_NOT_TRACK: "1"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: End-to-end smoke run
+        run: bash tests/e2e/smoke.sh
+
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - name: Put the PostgreSQL tools on PATH (the collector's real-database tests)
+        run: echo "$(ls -d /usr/lib/postgresql/*/bin | sort -V | tail -n 1)" >> "$GITHUB_PATH"
+      - name: Collector tests
+        working-directory: collector
+        run: node --test --experimental-test-module-mocks
+      - name: Installer prototype tests
+        working-directory: npm
+        run: npm test
+
+  # CI is green only if every job above ran and passed: a skipped job alone would leave a green
+  # run that tested nothing.
+  tests-ran:
+    if: always()
+    needs: [python, linux-e2e, node]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every test job passed
+        env:
+          RESULTS: ${{ needs.python.result }} ${{ needs.linux-e2e.result }} ${{ needs.node.result }}
+        run: |
+          echo "results: $RESULTS"
+          for r in $RESULTS; do [ "$r" = success ] || { echo "a test job did not pass: $r"; exit 1; }; done

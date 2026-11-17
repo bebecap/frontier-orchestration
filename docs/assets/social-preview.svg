@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <title>Frontier Orchestration</title>
+  <!-- Social preview source. Render to docs/assets/social-preview.png at 1280x640. Text only, no vendor logos. -->
+  <defs>
+    <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#1F2630"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0D1117" stop-opacity="1"/>
+      <stop offset="0.55" stop-color="#0D1117" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#0D1117" stop-opacity="0"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5EEAD4"/>
+    </marker>
+    <marker id="arrowDim" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3B4452"/>
+    </marker>
+  </defs>
+
+  <style>
+    .sans { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    .mono { font-family: Menlo, "SF Mono", Monaco, "Courier New", monospace; }
+  </style>
+
+  <rect width="1280" height="640" fill="#0D1117"/>
+  <rect width="1280" height="640" fill="url(#dots)"/>
+  <rect width="760" height="640" fill="url(#fade)"/>
+
+  <!-- Left: name and tagline -->
+  <text x="80" y="128" class="mono" font-size="20" letter-spacing="3" fill="#5EEAD4">AGENT SKILL + PLUGIN</text>
+  <text x="76" y="232" class="sans" font-size="88" font-weight="700" letter-spacing="-2" fill="#F0F3F6">Frontier</text>
+  <text x="76" y="330" class="sans" font-size="88" font-weight="700" letter-spacing="-2" fill="#F0F3F6">Orchestration</text>
+  <text x="80" y="400" class="sans" font-size="29" fill="#AEB7C2">Route each task to the model that fits it.</text>
+  <text x="80" y="442" class="sans" font-size="29" fill="#AEB7C2">A different vendor reviews the work.</text>
+
+  <text x="80" y="560" class="mono" font-size="19" fill="#6B7684">Claude Code  ·  Codex  ·  Antigravity  ·  skills.sh</text>
+
+  <!-- Right: task -> decision engine -> three vendors -->
+  <g>
+    <rect x="890" y="88" width="180" height="48" rx="24" fill="none" stroke="#3B4452" stroke-width="2"/>
+    <text x="980" y="119" class="mono" font-size="20" text-anchor="middle" fill="#C9D1D9">task</text>
+
+    <line x1="980" y1="136" x2="980" y2="196" stroke="#5EEAD4" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="850" y="200" width="260" height="138" rx="14" fill="#111A20" stroke="#5EEAD4" stroke-width="2.5"/>
+    <text x="980" y="234" class="mono" font-size="16" letter-spacing="2" text-anchor="middle" fill="#5EEAD4">DECISION ENGINE</text>
+    <text x="980" y="282" class="sans" font-size="44" font-weight="700" text-anchor="middle" fill="#F0F3F6">Jev</text>
+    <text x="980" y="316" class="mono" font-size="17" text-anchor="middle" fill="#AEB7C2">confidence × stakes</text>
+
+    <path d="M980,338 C980,380 832,380 832,426" fill="none" stroke="#3B4452" stroke-width="2" marker-end="url(#arrowDim)"/>
+    <path d="M980,338 L980,426" fill="none" stroke="#5EEAD4" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <path d="M980,338 C980,380 1128,380 1128,426" fill="none" stroke="#3B4452" stroke-width="2" marker-end="url(#arrowDim)"/>
+
+    <rect x="770" y="430" width="124" height="50" rx="10" fill="none" stroke="#3B4452" stroke-width="2"/>
+    <text x="832" y="462" class="sans" font-size="22" font-weight="600" text-anchor="middle" fill="#C9D1D9">Claude</text>
+
+    <rect x="918" y="430" width="124" height="50" rx="10" fill="#0F2A28" stroke="#5EEAD4" stroke-width="2.5"/>
+    <text x="980" y="462" class="sans" font-size="22" font-weight="600" text-anchor="middle" fill="#F0F3F6">Codex</text>
+
+    <rect x="1066" y="430" width="124" height="50" rx="10" fill="none" stroke="#3B4452" stroke-width="2"/>
+    <text x="1128" y="462" class="sans" font-size="22" font-weight="600" text-anchor="middle" fill="#C9D1D9">Gemini</text>
+
+    <path d="M832,480 C832,530 1128,530 1128,480" fill="none" stroke="#8B95A1" stroke-width="1.5" stroke-dasharray="5 6"/>
+    <text x="980" y="540" class="mono" font-size="15" text-anchor="middle" fill="#8B95A1">cross-vendor review</text>
+
+    <text x="980" y="590" class="mono" font-size="19" text-anchor="middle" fill="#6B7684"><tspan fill="#5EEAD4">act</tspan>  ·  ESCALATE  ·  REJECT</text>
+  </g>
+</svg>

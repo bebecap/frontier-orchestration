@@ -1,0 +1,66 @@
+# Frontier Orchestration
+
+> An agent skill and plugin that routes high-stakes work across frontier models from different vendors.
+> It runs in Claude Code, OpenAI Codex, Antigravity, and any agent through skills.sh.
+> For each task it asks the engine (Jev) which model fits, then gates the pick on confidence x stakes: act, ESCALATE or REJECT.
+> The engine can be TypeSafe Jev, OpenJev, any compatible server, or off (local rules).
+> Everything runs through one Python standard-library command line: skills/frontier-orchestration/scripts/fo.py.
+
+Start with SKILL.md for the agent rules. Then run `fo.py --help` for the command list. All paths are relative to the repository root.
+
+## Skill
+
+- [SKILL.md](skills/frontier-orchestration/SKILL.md): the rules an agent follows: discovery, routing, the gate, the independence rule, pipelines, the learning loop
+- [commands/setup.md](commands/setup.md): the Claude Code `/frontier-orchestration:setup` command
+
+## Code
+
+- [fo.py](skills/frontier-orchestration/scripts/fo.py): the command line: install, setup, doctor, providers, ask, route, eval, refresh, config, jev ping, lessons, telemetry; exit codes
+- [fo_route.py](skills/frontier-orchestration/scripts/fo_route.py): routing: candidate filter, the two engine questions, the confidence x stakes gate, the local heuristic, the demo spec
+- [fo_eval.py](skills/frontier-orchestration/scripts/fo_eval.py): `fo.py eval`: the sanity and routing suites, metrics, hard checks, exit codes
+- [fo_install.py](skills/frontier-orchestration/scripts/fo_install.py): the interactive installer, OpenJev builds, the MLX launcher and the Docker path
+- [fo_providers.py](skills/frontier-orchestration/scripts/fo_providers.py): how each vendor CLI is found, its sign-in check, and the read-only `fo.py ask` runner
+- [fo_jev.py](skills/frontier-orchestration/scripts/fo_jev.py): the engine client: key lookup, HTTPS rule, error messages, ping
+- [fo_config.py](skills/frontier-orchestration/scripts/fo_config.py): the config file, engine defaults, environment overrides
+- [fo_refresh.py](skills/frontier-orchestration/scripts/fo_refresh.py): the model snapshot from each CLI and roster drift
+- [fo_lessons.py](skills/frontier-orchestration/scripts/fo_lessons.py): the learning ledger (lessons and runs)
+- [fo_telemetry.py](skills/frontier-orchestration/scripts/fo_telemetry.py): the opt-in telemetry allowlist and switches
+- [roster.json](skills/frontier-orchestration/data/roster.json): model ids, vendors, tiers, aliases, descriptions
+- [evals/](skills/frontier-orchestration/evals/): the sanity (24 questions) and routing (20 tasks) datasets
+
+## References
+
+- [references/providers.md](skills/frontier-orchestration/references/providers.md): transports, `fo.py ask` flags, notes per CLI, failure signs
+- [references/pipeline.md](skills/frontier-orchestration/references/pipeline.md): the estimate pipeline and the code ship-gate loop
+- [references/ledger.md](skills/frontier-orchestration/references/ledger.md): every `fo.py lessons` command and the status rule
+- [references/evidence.md](skills/frontier-orchestration/references/evidence.md): the measured runs behind the routing and review rules
+- [references/rules.md](skills/frontier-orchestration/references/rules.md): confirmed orchestration rules from the maintainer's ledger
+- [references/privacy.md](skills/frontier-orchestration/references/privacy.md): the privacy notice shipped inside the skill (a copy of PRIVACY.md)
+
+## Docs
+
+- [docs/README.md](docs/README.md): the documentation index
+- [docs/install.md](docs/install.md): hosts, the installer, setup flags, engines, OpenJev builds, memory pressure
+- [docs/how-it-works.md](docs/how-it-works.md): the routing flow and the gate, with diagrams and a worked example
+- [docs/cost.md](docs/cost.md): cheap models for cheap work, measured evidence, how a team turns it on
+- [docs/eval.md](docs/eval.md): `fo.py eval` suites, metrics, exit codes, measured results
+- [docs/providers.md](docs/providers.md): Claude, Codex, Antigravity, sign-in, the `fo.py ask` contract
+- [docs/telemetry.md](docs/telemetry.md): opt-in anonymous counters
+- [docs/troubleshooting.md](docs/troubleshooting.md): `fo.py doctor` output and common failures
+
+## Tests and collector
+
+- [tests/](tests/): the Python test suite; run `python3 -m unittest discover -s tests -v`
+- [tests/e2e/](tests/e2e/): the first-run smoke script (`smoke.sh`, which always runs `smoke_body.sh` under `supervise.py`), the installer driver and OpenJev build comparison scripts
+- [scripts/prepublish_check.py](scripts/prepublish_check.py): the release gate: checks every commit of a history before it is published
+- [collector/](collector/): the telemetry collector source (Vercel Functions, Postgres)
+
+## Optional
+
+- [README.md](README.md): the project overview
+- [PRIVACY.md](PRIVACY.md): the full privacy notice
+- [CHANGELOG.md](CHANGELOG.md): release notes
+- [CONTRIBUTING.md](CONTRIBUTING.md): ground rules and release steps
+- [AGENTS.md](AGENTS.md): setup, test commands and code rules for coding agents
+- [SECURITY.md](SECURITY.md): how to report a vulnerability, and the security design rules
+- [LICENSE](LICENSE): MIT
