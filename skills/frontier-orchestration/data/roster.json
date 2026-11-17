@@ -1,5 +1,5 @@
 {
-  "checked": "2026-11-15",
+  "checked": "2026-11-17",
   "note": "Dated catalogue of models the router can pick from. Ids go stale: run `fo.py refresh` to see drift against what your CLIs offer today, and override entries in ~/.config/frontier-orchestration/roster.json instead of editing this file.",
   "models": {
     "fable": {
@@ -26,13 +26,25 @@
       "exact": "claude-haiku-5-5",
       "description": "Alias for the smallest Claude (Haiku 5.5 on 2026-11-15). Cheapest and fastest. For trivial mechanical steps where an error is obvious and cheap."
     },
+    "gpt-6.2-sol": {
+      "vendor": "codex",
+      "tier": "frontier",
+      "aliases": [],
+      "description": "Newest Sol in the Codex catalogue (GPT-6.2 Sol, first seen 2026-11-17): the vendor's fast go-to model for coding and everyday work. A DIFFERENT vendor from Claude. NO measured review prior and no evidence here that it reviews better than gpt-6.1-sol. Use it as an extra blind lane next to a measured reviewer; verify every finding."
+    },
+    "gpt-6.2-astra": {
+      "vendor": "codex",
+      "tier": "frontier",
+      "aliases": [],
+      "description": "Newest Astra in the Codex catalogue (GPT-6.2 Astra, first seen 2026-11-17): the vendor calls it its most capable model for complex coding and professional work. A DIFFERENT vendor from Claude. NO measured review prior and no evidence here that it reviews better than gpt-6-astra. Use it as an extra blind lane next to a measured reviewer; verify every finding."
+    },
     "gpt-6.1-sol": {
       "vendor": "codex",
       "tier": "frontier",
       "aliases": [
         "sol"
       ],
-      "description": "Current Codex frontier (GPT-6.1 Sol). A DIFFERENT vendor from Claude, so it fails differently. Maintainer runs: on server-side concurrency and data-safety code review every finding held, most with its own runtime probe; it found transaction-lifetime, lock-order and timeout defects. It did not catch that one of its own prescribed fixes crashed the driver: verify prescribed fixes by reproduction."
+      "description": "Codex frontier (GPT-6.1 Sol), the Sol with measured runs; gpt-6.2-sol is newer and not measured. A DIFFERENT vendor from Claude, so it fails differently. Maintainer runs: on server-side concurrency and data-safety code review every finding held, most with its own runtime probe; it found transaction-lifetime, lock-order and timeout defects. It did not catch that one of its own prescribed fixes crashed the driver: verify prescribed fixes by reproduction."
     },
     "gpt-6-astra": {
       "vendor": "codex",
@@ -40,7 +52,7 @@
       "aliases": [
         "astra"
       ],
-      "description": "Codex frontier (GPT-6 Astra). A DIFFERENT vendor from Claude. Finds CONCRETE DEFECTS: a wrong line in the code. Maintainer runs: on a raw estimate 3 of 5 specific claims held and its size asks were about 2.5x too big; on an already-verified estimate its direction held on every item and about one third of its size asks survived. Verify both the claim and the size."
+      "description": "Codex frontier (GPT-6 Astra), the Astra with measured runs; gpt-6.2-astra is newer and not measured. A DIFFERENT vendor from Claude. Finds CONCRETE DEFECTS: a wrong line in the code. Maintainer runs: on a raw estimate 3 of 5 specific claims held and its size asks were about 2.5x too big; on an already-verified estimate its direction held on every item and about one third of its size asks survived. Verify both the claim and the size."
     },
     "gpt-6-sol": {
       "vendor": "codex",

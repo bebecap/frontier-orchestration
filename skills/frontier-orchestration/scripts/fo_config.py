@@ -20,7 +20,7 @@ import shlex
 import tempfile
 
 APP = "frontier-orchestration"
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 SCHEMA_VERSION = 1
 HERE = os.path.dirname(os.path.abspath(__file__))
 SKILL_DIR = os.path.dirname(HERE)

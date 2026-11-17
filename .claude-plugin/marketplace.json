@@ -10,7 +10,7 @@
       "name": "frontier-orchestration",
       "source": "./",
       "description": "Route high-stakes work across frontier models with a Jev judge, a confidence x stakes gate, a different-vendor review rule, and a learning ledger.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "category": "productivity",
       "tags": [
         "orchestration",
