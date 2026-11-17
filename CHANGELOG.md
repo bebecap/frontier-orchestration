@@ -6,6 +6,10 @@ All notable changes to this project are listed here. The format follows
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-17
+
+First public release.
+
 ### Security
 
 - Release gate: `--allow-email ADDRESS` (repeatable) lets the owner publish under one chosen
@@ -181,9 +185,7 @@ All notable changes to this project are listed here. The format follows
 - Docs: the compact OpenJev build's memory, measured with each MLX buffer cap, and its current
   request times (the earlier 1.0 s sanity figure was from the first build comparison).
 
-## [0.1.0] - 2026-11-15
-
-First public packaging.
+### Packaging (2026-11-15)
 
 - Telemetry is live: the project's own collector (`collector/`, Vercel Functions and Neon
   Postgres in fra1) re-applies the allowlist and stores only per-day aggregate counters: no event
@@ -265,3 +267,6 @@ First public packaging.
   `fo.py doctor` says to delete it. A CLI that is not on `PATH` goes in `FO_PATH_EXTRA`.
 - The OpenJev launcher caps MLX's buffer pool at 1 GB for the pinned builds (peak memory 19 GB
   instead of 22, same eval results).
+
+[Unreleased]: https://github.com/bebecap/frontier-orchestration/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/bebecap/frontier-orchestration/releases/tag/v0.1.0
