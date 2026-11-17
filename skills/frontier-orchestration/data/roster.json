@@ -30,13 +30,13 @@
       "vendor": "codex",
       "tier": "frontier",
       "aliases": [],
-      "description": "Newest Sol in the Codex catalogue (GPT-6.2 Sol, first seen 2026-11-17): the vendor's fast go-to model for coding and everyday work. A DIFFERENT vendor from Claude. NO measured review prior and no evidence here that it reviews better than gpt-6.1-sol. Use it as an extra blind lane next to a measured reviewer; verify every finding."
+      "description": "Newest Sol in the Codex catalogue (GPT-6.2 Sol, first seen 2026-11-17): the vendor's fast go-to model for coding and everyday work. A DIFFERENT vendor from Claude. Maintainer run 2026-11-17, blind review of one file with 10 seeded defects and 4 correct-code traps, effort high: found 10 of 10, flagged 0 traps, 17 of 21 claims held (7 true defects outside the key, 4 false). It reported the most findings and had the most false ones. One run, one synthetic file, and three of four reviewers found all 10, so this does not show it reviews better than the older models. Verify every finding."
     },
     "gpt-6.2-astra": {
       "vendor": "codex",
       "tier": "frontier",
       "aliases": [],
-      "description": "Newest Astra in the Codex catalogue (GPT-6.2 Astra, first seen 2026-11-17): the vendor calls it its most capable model for complex coding and professional work. A DIFFERENT vendor from Claude. NO measured review prior and no evidence here that it reviews better than gpt-6-astra. Use it as an extra blind lane next to a measured reviewer; verify every finding."
+      "description": "Newest Astra in the Codex catalogue (GPT-6.2 Astra, first seen 2026-11-17): the vendor calls it its most capable model for complex coding and professional work. A DIFFERENT vendor from Claude. Maintainer run 2026-11-17, blind review of one file with 10 seeded defects and 4 correct-code traps, effort high: found 10 of 10, flagged 0 traps, 18 of 20 claims held (8 true defects outside the key, 2 false). One run, one synthetic file, and three of four reviewers found all 10, so this does not show it reviews better than the older models. Verify every finding."
     },
     "gpt-6.1-sol": {
       "vendor": "codex",

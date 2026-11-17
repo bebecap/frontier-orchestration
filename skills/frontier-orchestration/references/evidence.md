@@ -47,6 +47,35 @@ checked against the repository.
 - One verified claim came back stronger than stated: the code had a cleanup function whose own
   comment stated the invariant, and nothing called it.
 
+## Four Codex reviewers, one seeded file (2026-11-17)
+
+One Python file of 342 lines with 10 seeded defects, one per class (race, path traversal,
+off-by-one, resource leak, swallowed exception, missing timeout, non-atomic write, time units,
+aliasing, allow-list bypass), and 4 traps: code that looks wrong and is correct. A script proves
+each defect and each trap by execution. Each reviewer got the same instructions through
+`fo.py ask codex --effort high`, saw no key, and ran once. Every claim outside the key was then
+checked by execution.
+
+| | `gpt-6.2-sol` | `gpt-6.2-astra` | `gpt-6.1-sol` | `gpt-6-astra` |
+|---|---|---|---|---|
+| findings | 21 | 20 | 15 | 16 |
+| seeded defects found | 10 of 10 | 10 of 10 | 9 of 10 | 10 of 10 |
+| traps flagged as defects | 0 | 0 | 0 | 0 |
+| true defects outside the key | 7 | 8 | 5 | 5 |
+| false claims | 4 | 2 | 1 | 1 |
+| claims that held | 17 of 21 | 18 of 20 | 14 of 15 | 15 of 16 |
+| time | 120 s | 132 s | 173 s | 98 s |
+
+- The seeded defects separate the reviewers very little: three of four found all 10, and nobody
+  flagged a trap. The difference is in the extras: the two new models reported more, found 2 or 3
+  more real defects, and made more false claims.
+- `gpt-6.1-sol` missed the swallowed exception as a finding of its own; it named the same effect
+  inside another finding, which was not counted.
+- Two of the false claims of `gpt-6.2-sol` need a nonsense input (a negative byte limit, a timeout of
+  `nan`) after which the code fails safely. Counted as defects, its result is 19 of 21.
+- Limits: one run per model, one synthetic file, no variance. This is a prior about seeded
+  defects in a small file, not about a real review of a large change.
+
 ## Feeding priors back into the roster
 
 Rewriting the roster descriptions to say what each reviewer finds, its hit rate and its sizing
